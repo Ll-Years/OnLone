@@ -1,0 +1,314 @@
+/* Regex Replace Plugin Styles
+ * 版本：Ver 2.4.8 20260615
+ * 更新日志：
+ * - 禁用Modal所有动画效果，解决关闭窗口迟顿感
+ * - 统一按钮样式
+ * - 优化历史记录下拉列表样式（适配弹出列表）
+ */
+
+/* 弹窗容器：压缩内边距(可调5-10px) */
+.regex-replace-modal {
+    padding: 5px;
+}
+
+/* 隐藏Modal标题，减少占屏 */
+.regex-replace-modal h2 {
+    display: none;
+}
+
+/* 输入框区域：与顶部保持边距 */
+.regex-replace-field {
+    margin-top: 6px; /* 搜索框与顶部间距(推荐6px) */
+    margin-bottom: 5px; /* 与下方元素间距 */
+}
+
+/* 搜索/替换输入框：直角微弧，统一圆角2px */
+.regex-replace-input {
+    width: 100%;
+    height: 38px !important;
+    padding: 8px;
+    font-family: var(--font-monospace);
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 3px !important;
+    border: 1px solid var(--background-modifier-border);
+}
+
+/* 标志选项区域 */
+.regex-replace-flags {
+    margin-bottom: 12px;
+}
+
+/* 标志复选框包装器：水平等距分布 */
+/* 可改为 space-between / flex-start */
+.regex-replace-flags-wrapper {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    opacity: 0.8;
+}
+
+/* 每个复选框标签 */
+.regex-replace-flag-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* 匹配计数显示 */
+.regex-replace-match-count {
+    margin: 12px 0;
+    padding: 4px;
+    background: var(--background-secondary);
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* 错误提示：仅文字高亮 */
+.regex-replace-error {
+    color: var(--text-error);
+}
+
+/* 预览区域容器 */
+.regex-replace-preview-container {
+    margin-bottom: 12px;
+}
+
+/* 预览内容区域：滚动条支持 */
+.regex-replace-preview {
+    padding: 12px;
+    background: var(--background-secondary);
+    border-radius: 4px;
+    font-family: var(--font-monospace);
+    font-size: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    opacity: 0.8;
+}
+
+/* 原文/替换结果块 */
+.regex-replace-preview-original,
+.regex-replace-preview-replaced {
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 4px;
+    word-break: break-all;
+    white-space: pre-wrap;
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    opacity: 0.8;
+}
+
+/* 预览标题居中 */
+.regex-replace-preview-original strong,
+.regex-replace-preview-replaced strong {
+    display: block;
+    text-align: center;
+}
+
+/* 按钮行：单行等距分布 */
+.regex-replace-buttons {
+    display: flex;
+    flex-wrap: nowrap; /* 禁止换行 */
+    justify-content: space-evenly; /* 均匀分布，避免贴边 */
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* 历史记录下拉列表 - 基础样式 */
+.regex-replace-history-select {
+    min-width: 80px;
+    max-width: 200px;
+    height: 32px;
+    padding: 4px 8px;
+    font-size: 12px !important;
+    font-family: var(--font-ui);
+    border-radius: 3px !important;
+    background: var(--background-secondary);
+    color: var(--text-normal);
+    border: 1px solid var(--background-modifier-border);
+    cursor: pointer;
+    opacity: 0.8;
+    transform-origin: left center;
+}
+
+/* 下拉框悬停效果 */
+.regex-replace-history-select:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* 所有按钮统一样式(基础态) */
+.regex-replace-delete-btn,
+.regex-replace-find-btn,
+.regex-replace-replaceone-btn,
+.regex-replace-buttons button {
+    padding: 4px 8px;
+    font-size: 12px;
+    width: 72px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px !important;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background: var(--background-secondary);
+    color: var(--text-muted);
+    border: 1px solid var(--background-modifier-border);
+    opacity: 0.8;
+}
+
+/* 激活态(正则有效时高亮) */
+.regex-replace-find-btn.active,
+.regex-replace-replaceone-btn.active,
+.regex-replace-buttons button.mod-cta.active {
+    background: var(--interactive-accent);
+    color: var(--text-on-accent);
+    opacity: 1;
+    border-color: transparent;
+}
+
+/* 删除按钮激活态(选中历史记录时警告色) */
+.regex-replace-delete-btn.active {
+    background: var(--background-modifier-error);
+    color: var(--text-on-error);
+    opacity: 1;
+    border-color: transparent;
+}
+
+/* 关闭按钮始终保持普通样式 */
+.regex-replace-buttons button:last-child {
+    background: var(--background-secondary);
+    color: var(--text-normal);
+    opacity: 1;
+}
+
+/* 高亮内容容器 */
+.regex-replace-highlight-content {
+    margin-top: 4px;
+    line-height: 1.5;
+}
+
+/* 匹配项高亮(黄色背景) */
+.regex-replace-highlight-match {
+    background: #ffeb3b;
+    color: #000;
+    padding: 1px 2px;
+    border-radius: 1px;
+    font-weight: 600;
+}
+
+/* 替换项高亮(绿色背景) */
+.regex-replace-highlight-replacement {
+    background: #4caf50;
+    color: #fff;
+    padding: 1px 2px;
+    border-radius: 1px;
+    font-weight: 600;
+}
+
+/* 深色主题适配 */
+.theme-dark .regex-replace-highlight-match {
+    background: #ffc107;
+    color: #000;
+}
+
+.theme-dark .regex-replace-highlight-replacement {
+    background: #66bb6a;
+    color: #000;
+}
+
+/* 截断提示 */
+.regex-replace-truncated {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* 匹配列表区域 */
+.regex-replace-match-list {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+.regex-replace-match-list ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+    font-size: 12px;
+}
+
+.regex-replace-match-list li {
+    margin-bottom: 4px;
+}
+
+/* 匹配项文本预览底色 */
+.regex-replace-match-text {
+    background: rgba(255, 235, 59, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+}
+
+.regex-replace-replacement-text {
+    background: rgba(76, 175, 80, 0.3);
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-family: var(--font-monospace);
+}
+
+/* 更多提示 */
+.regex-replace-more {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* 隐藏Modal头部区域及关闭按钮 */
+.modal-header,
+.modal-close-button {
+    display: none !important;
+}
+
+/* 关闭窗口动画禁用 - 解决迟顿感 */
+/* 禁用关闭按钮过渡 */
+.modal-close-button {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* 禁用背景过渡 */
+.modal-bg {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* 禁用容器过渡 */
+.modal-container {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* 禁用对话框过渡 */
+.modal {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* 禁用对话框内容过渡 */
+.modal-content {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* 强制移除任何可能的过渡效果 */
+* {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
