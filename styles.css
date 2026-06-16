@@ -1,5 +1,5 @@
 /* Regex Replace Plugin Styles
- * 版本：Ver 2.5.0 20260616
+ * 版本：Ver 2.6.0 20260616
  */
 
 /* ============ 弹窗总体容器 ============ */
@@ -127,7 +127,7 @@
     background: var(--background-modifier-hover);
 }
 
-/* ============ 按钮样式 ============ */
+/* ============ 按钮统一样式 ============ */
 .regex-replace-delete-btn,
 .regex-replace-find-btn,
 .regex-replace-replaceone-btn,
